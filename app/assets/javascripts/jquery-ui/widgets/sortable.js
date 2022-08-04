@@ -703,8 +703,8 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 			return false;
 		}
 
-		verticalDirection = this.dragDirection.vertical;
-		horizontalDirection = this.dragDirection.horizontal;
+		verticalDirection = this._getDragVerticalDirection();
+		horizontalDirection = this._getDragHorizontalDirection();
 
 		return this.floating ?
 			( ( horizontalDirection === "right" || verticalDirection === "down" ) ? 2 : 1 ) :
@@ -718,8 +718,8 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 				this.offset.click.top, item.top + ( item.height / 2 ), item.height ),
 			isOverRightHalf = this._isOverAxis( this.positionAbs.left +
 				this.offset.click.left, item.left + ( item.width / 2 ), item.width ),
-			verticalDirection = this.dragDirection.vertical,
-			horizontalDirection = this.dragDirection.horizontal;
+			verticalDirection = this._getDragVerticalDirection(),
+			horizontalDirection = this._getDragHorizontalDirection();
 
 		if ( this.floating && horizontalDirection ) {
 			return ( ( horizontalDirection === "right" && isOverRightHalf ) ||
